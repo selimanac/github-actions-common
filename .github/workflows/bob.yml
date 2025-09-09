@@ -48,6 +48,7 @@ jobs:
     strategy:
       matrix:
         platform: [armv7-android, x86_64-linux, js-web]
+      fail-fast: false
     runs-on: ${{ inputs.ubuntu_runner }}
 
     name: Build
@@ -88,6 +89,7 @@ jobs:
     strategy:
       matrix:
         platform: [x86_64-win32, x86-win32]
+      fail-fast: false
     runs-on: ${{ inputs.windows_runner }}
 
     name: Build
@@ -124,6 +126,7 @@ jobs:
     strategy:
       matrix:
         platform: [arm64-macos, x86_64-macos]
+      fail-fast: false
     runs-on: macOS-latest
 
     name: Build
