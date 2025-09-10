@@ -46,7 +46,7 @@ on:
         required: false
         type: string
         description: 'JSON-like string with list of ignored platforms' # [{"platform": "wasm_pthread-web"}, {"platform": "js-web"}]
-        default: ''
+        default: '[]'
 
 jobs:
   build_with_bob:
