@@ -89,9 +89,12 @@ jobs:
         run: java -jar bob.jar --platform=${{ matrix.platform }} --architectures ${{ matrix.platform }} build --build-server=${{ inputs.build_server }} ${{ inputs.additonal_build_options }}
       - name: Bundle
         run: |
+          echo "PLATFORM: ${{ matrix.platform }}"
           if [[ "${{ matrix.platform }}" == "armv7-android" || "${{ matrix.platform }}" == "arm64-android" ]]; then
+            echo "CMD: java -jar bob.jar --platform=${{ matrix.platform }} --architectures ${{ matrix.platform }} bundle ${{ inputs.additonal_bundle_options }} --strip-executable false"
             java -jar bob.jar --platform=${{ matrix.platform }} --architectures ${{ matrix.platform }} bundle ${{ inputs.additonal_bundle_options }} --strip-executable false
           else
+            echo "CMD: java -jar bob.jar --platform=${{ matrix.platform }} --architectures ${{ matrix.platform }} bundle ${{ inputs.additonal_bundle_options }}"
             java -jar bob.jar --platform=${{ matrix.platform }} --architectures ${{ matrix.platform }} bundle ${{ inputs.additonal_bundle_options }}
           fi
         shell: bash
